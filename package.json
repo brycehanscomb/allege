@@ -1,0 +1,22 @@
+{
+  "name": "allege",
+  "version": "0.0.1",
+  "description": "Make complex conditionals easier to read and write",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://brycehanscomb@github.com/brycehanscomb/allege.git"
+  },
+  "author": "Bryce Hanscomb",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/brycehanscomb/allege/issues"
+  },
+  "homepage": "https://github.com/brycehanscomb/allege",
+  "dependencies": {
+    "curry": "^1.2.0"
+  }
+}
