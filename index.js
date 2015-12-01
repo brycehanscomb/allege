@@ -26,9 +26,9 @@ function isNoneOf(needle, haystack) {
  * @returns {boolean}
  */
 function isAllOf(needle, haystack) {
-    return haystack.filter(function(el) {
+    return haystack.every(function(el) {
         return el === needle;
-    }).length === haystack.length;
+    });
 }
 
 /**
