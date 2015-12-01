@@ -1,6 +1,6 @@
 # Allege
 
-Make complex conditionals easier to read and write.
+Make complex conditionals easier to read and write. Written in ES6 (ES2015) as a CommonJS module.
 
 ## Introduction
 
@@ -15,8 +15,6 @@ Sometimes, `if` statements can get very complex. For example:
 		foo.bar === 'value_e'
 	) {
 		// do something
-	} else {
-		// do something else
 	}
 ```
 
@@ -33,8 +31,6 @@ With Allege, you can simplify your `if` like so:
 		)
 	) {
 		// do something
-    } else {
-        // do something else
     }
 ```
 
@@ -53,23 +49,39 @@ will be available:
 
 #### `bool` isAnyOf(possibility1, ..., possibilityN)
 
-Determines whether `foo` is referentially equal (`===`) to any of the `possibility` items.
+Determines whether `foo` is referentially equal (`===`) to **any** of the `possibility` items.
 
 ```js
-allege(5).isAnyOf(1,2,3,4,5,6);
+allege(5).isAnyOf(1, 2, 3, 4, 5, 6);
 // --> true
 
-allege('hi').isAnyOf('hello', 'good morning', 'sup')
+allege('hi').isAnyOf('hello', 'good morning', 'sup');
 // --> false
 ```
 
 #### `bool` isNoneOf(possibility1, ..., possibilityN)
 
-...
+Determines whether `foo` is referentially unequal (`!==`) to **all** of the `possibility` items.
+
+```js
+allege(5).isNoneOf(1, 2, 3, 4);
+// --> true
+
+allege(5).isNoneOf(1, 2, 3, 4, 5);
+// --> false
+```
 
 #### `bool` isAllOf(possibility1, ..., possibilityN)
 
-...
+Determines whether `foo` is referentially equal (`===`) to **all** of the `possibility` items.
+
+```js
+allege(5).isAllOf(5, 5, 5);
+// --> true
+
+allege(5).isAllOf(5, 5, 4);
+// --> false
+```
 
 ### Multiple Input Commands
 
@@ -78,8 +90,40 @@ methods will be available:
 
 #### `bool` areAll(possibility)
 
-...
+Determines whether all `input`s are referentially equal (`===`) to the `possibility` item.
+
+```js
+allege(5, 5, 5, 5).areAll(5);
+// --> true
+
+allege(5, 5, 5, 5).areAll(4);
+// --> false
+```
 
 #### `bool` areAllNot(possibility)
 
-...
+Determines whether all `input`s are referentially unequal (`!==`) to the `possibility` item.
+
+```js
+allege(5, 5, 5, 5).areAllNot(4);
+// --> true
+
+allege(5, 5, 5, 5).areAllNot(5);
+// --> false
+```
+
+## Installation
+
+Grab this module from `npm` with the following command:
+
+```js
+npm install allege
+```
+
+## Versioning
+
+This module follows SemVer.
+
+## License
+
+MIT. See the `LICENSE` file for more details.
