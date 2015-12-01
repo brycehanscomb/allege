@@ -1,7 +1,5 @@
 'use strict';
 
-require('./src/polyfills/Array.prototype.includes');
-
 /**
  * @param {*} needle
  * @param {Array} haystack
