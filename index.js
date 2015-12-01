@@ -1,6 +1,6 @@
-require('./src/polyfills/Array.prototype.includes');
+'use strict';
 
-const curry = require('curry');
+require('./src/polyfills/Array.prototype.includes');
 
 /**
  * @param {*} needle
@@ -11,42 +11,88 @@ function isAnyOf(needle, haystack) {
     return haystack.includes(needle);
 }
 
+/**
+ * @param {*} needle
+ * @param {Array} haystack
+ * @returns {boolean}
+ */
 function isNoneOf(needle, haystack) {
     return !isAnyOf(needle, haystack);
 }
 
 /**
- * @param input
- * @returns {Object.<string, function>}
+ * @param {*} needle
+ * @param {Array} haystack
+ * @returns {boolean}
  */
-function allege(input) {
-
-    /**
-     * @type {function}
-     * @param {Array} possibilities - The list of things that `input` could be any one of
-     * @returns {boolean}
-     */
-    const isAnyOfBoundWithNeedle = curry(isAnyOf)(input);
-
-    /**
-     * @type {function}
-     * @param {Array} possibilities - The list of things that `input` could be any one of
-     * @returns {boolean}
-     */
-    const isNoneOfBoundWithNeedle = curry(isNoneOf)(input);
-
-    return {
-        // main API
-        isAnyOf: isAnyOfBoundWithNeedle,
-        isNoneOf: isNoneOfBoundWithNeedle,
-
-        // helpful aliases
-        isNot: isNoneOfBoundWithNeedle
-    };
+function isAllOf(needle, haystack) {
+    return haystack.filter(function(el) {
+        return el === needle;
+    }).length === haystack.length;
 }
 
 /**
- * @exports {allege}
+ * @param {...*} inputValues
+ * @returns {Object}
+ */
+function allege(...inputValues) {
+
+    const singleValueAPI = {
+
+        /**
+         * @param {...*} possibilities
+         * @returns {boolean}
+         */
+        isAnyOf: function(...possibilities) {
+            return isAnyOf(inputValues, Array.from(possibilities));
+        },
+
+        /**
+         * @param {...*} possibilities
+         * @returns {boolean}
+         */
+        isNoneOf: function(...possibilities) {
+            return isNoneOf(inputValues, Array.from(possibilities));
+        },
+
+        /**
+         * @param {...*} possibilities
+         * @returns {boolean}
+         */
+        isAllOf: function(...possibilities) {
+            return isAllOf(inputValues, Array.from(possibilities));
+        }
+    };
+
+    const multipleValuesAPI = {
+
+        /**
+         * @param {*} possibility
+         * @returns {boolean}
+         */
+        areAll: function(possibility) {
+            return isAllOf(inputValues, possibility);
+        },
+
+        /**
+         * @param {*} possibility
+         * @returns {boolean}
+         */
+        areAllNot: function(possibility) {
+            return isNoneOf(inputValues, possibility);
+        }
+    };
+
+    if (inputValues.length === 1) {
+        return singleValueAPI;
+    } else if (inputValues.length > 1) {
+        return multipleValuesAPI;
+    } else {
+        throw new ReferenceError('allege must be called with at least one argument.');
+    }
+}
+
+/**
  * @type {allege}
  */
 module.exports = allege;
