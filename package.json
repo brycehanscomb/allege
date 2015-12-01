@@ -17,6 +17,5 @@
   },
   "homepage": "https://github.com/brycehanscomb/allege",
   "dependencies": {
-    "curry": "^1.2.0"
   }
 }
