@@ -51,7 +51,7 @@ Each of these commands are available as below:
 To use these methods, call Allege with just a single argument, like so: `allege(foo)`. Then, these methods 
 will be available:
 
-#### `bool` allege(foo).isAnyOf(possibility1, ..., possibilityN)
+#### `bool` isAnyOf(possibility1, ..., possibilityN)
 
 Determines whether `foo` is referentially equal (`===`) to any of the `possibility` items.
 
@@ -63,11 +63,11 @@ allege('hi').isAnyOf('hello', 'good morning', 'sup')
 // --> false
 ```
 
-#### `bool` allege(foo).isNoneOf(possibility1, ..., possibilityN)
+#### `bool` isNoneOf(possibility1, ..., possibilityN)
 
 ...
 
-#### `bool` allege(foo).isAllOf(possibility1, ..., possibilityN)
+#### `bool` isAllOf(possibility1, ..., possibilityN)
 
 ...
 
@@ -76,10 +76,10 @@ allege('hi').isAnyOf('hello', 'good morning', 'sup')
 To use these methods, call Allege with more than one argument, like so: `allege(foo, bar, baz, quux)`. Then, these 
 methods will be available:
 
-#### `bool` allege(value1[, value2[, ...[, valueN]]].areAll(possibility)
+#### `bool` areAll(possibility)
 
 ...
 
-#### `bool` allege(value1[, value2[, ...[, valueN]]].areAllNot(possibility)
+#### `bool` areAllNot(possibility)
 
 ...
