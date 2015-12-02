@@ -1,5 +1,5 @@
-const allege = require('./index');
+const allege = require('./lib/index');
 
 console.log(
-    allege(1).isNoneOf([1,2,3,4,5])
+    allege(1,1,1).areAll(1)
 );
