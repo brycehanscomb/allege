@@ -1,5 +1,9 @@
 'use strict';
 
+require('./polyfills/Array.prototype.includes');
+require('./polyfills/Array.prototype.every');
+require('./polyfills/Array.from');
+
 /**
  * @param {*} needle
  * @param {Array} haystack
@@ -24,6 +28,7 @@ function isNoneOf(needle, haystack) {
  * @returns {boolean}
  */
 function isAllOf(needle, haystack) {
+    console.log(needle, haystack);
     return haystack.every(function(el) {
         return el === needle;
     });
@@ -42,7 +47,7 @@ function allege(...inputValues) {
          * @returns {boolean}
          */
         isAnyOf: function(...possibilities) {
-            return isAnyOf(inputValues, Array.from(possibilities));
+            return isAnyOf(inputValues[0], Array.from(possibilities));
         },
 
         /**
@@ -50,7 +55,7 @@ function allege(...inputValues) {
          * @returns {boolean}
          */
         isNoneOf: function(...possibilities) {
-            return isNoneOf(inputValues, Array.from(possibilities));
+            return isNoneOf(inputValues[0], Array.from(possibilities));
         },
 
         /**
@@ -58,7 +63,7 @@ function allege(...inputValues) {
          * @returns {boolean}
          */
         isAllOf: function(...possibilities) {
-            return isAllOf(inputValues, Array.from(possibilities));
+            return isAllOf(inputValues[0], Array.from(possibilities));
         }
     };
 
@@ -69,7 +74,7 @@ function allege(...inputValues) {
          * @returns {boolean}
          */
         areAll: function(possibility) {
-            return isAllOf(inputValues, possibility);
+            return isAllOf(possibility, Array.from(inputValues));
         },
 
         /**
@@ -77,7 +82,7 @@ function allege(...inputValues) {
          * @returns {boolean}
          */
         areAllNot: function(possibility) {
-            return isNoneOf(inputValues, possibility);
+            return isNoneOf(possibility, Array.from(inputValues));
         }
     };
 
