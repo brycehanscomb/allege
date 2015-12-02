@@ -127,3 +127,16 @@ This module follows SemVer.
 ## License
 
 MIT. See the `LICENSE` file for more details.
+
+## Testing
+
+There's not much by way of tests right now. More tests will come soon.
+
+## Building From Source
+
+The files that reside in the `lib/` directory are transpiled from ES6 to ES5. The original source
+files reside in the `src/` directory. These can be built with the following command:
+
+```js
+npm run transpile-to-es5
+```
