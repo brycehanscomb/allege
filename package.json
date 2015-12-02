@@ -1,6 +1,6 @@
 {
   "name": "allege",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Make complex conditionals easier to read and write",
   "main": "lib/index.js",
   "scripts": {
@@ -17,6 +17,7 @@
   "bugs": {
     "url": "https://github.com/brycehanscomb/allege/issues"
   },
+  "keywords": "is any of, if, ifs, conditional, check, checking, is all, validate",
   "homepage": "https://github.com/brycehanscomb/allege",
   "dependencies": {},
   "devDependencies": {
