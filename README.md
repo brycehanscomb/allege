@@ -15,15 +15,13 @@ if (foo.bar === 'value_a' ||foo.bar === 'value_b' ||foo.bar === 'value_c' ||foo.
 With Allege, you can simplify your `if` like so:
 
 ```js
-if (
-	allege(foo.bar).isAnyOf(
-		'value_a', 
-		'value_b', 
-		'value_c', 
-		'value_d',
-		'value_e'
-	)
-) {
+if (allege(foo.bar).isAnyOf(
+    'value_a', 
+    'value_b', 
+    'value_c', 
+    'value_d',
+    'value_e'
+)) {
     // do something
 }
 ```
