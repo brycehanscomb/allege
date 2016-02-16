@@ -1,6 +1,6 @@
 {
   "name": "allege",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Make complex conditionals easier to read and write",
   "main": "lib/index.js",
   "scripts": {
