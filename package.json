@@ -5,8 +5,7 @@
   "main": "lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "transpile-to-es5": "babel src --out-dir lib",
-    "prepublish": "npm run transpile-to-es5"
+    "build": "browserify src/index.js -t babelify --outfile lib/index.js"
   },
   "repository": {
     "type": "git",
@@ -21,6 +20,8 @@
   "homepage": "https://github.com/brycehanscomb/allege",
   "dependencies": {},
   "devDependencies": {
-    "babel": "^5.8.34"
+    "babel-cli": "^6.5.1",
+    "babel-preset-es2015": "^6.5.0",
+    "babelify": "^7.2.0"
   }
 }
