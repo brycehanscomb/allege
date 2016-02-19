@@ -22,8 +22,4 @@ const singleValueAPI = Object.freeze((inputValue) => ({
     isAllOf: (...possibilities) => isAllOf(inputValue, Array.from(possibilities))
 }));
 
-export default singleValueAPI;
-
-if (typeof module !== 'undefined') {
-    module.exports = singleValueAPI;
-}
+module.exports = singleValueAPI;

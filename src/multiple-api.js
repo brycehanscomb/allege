@@ -16,8 +16,4 @@ const multipleValuesAPI = Object.freeze((inputValues) => ({
     areAllNot: (possibility) => isNoneOf(possibility, Array.from(inputValues))
 }));
 
-export default multipleValuesAPI;
-
-if (typeof module !== 'undefined') {
-    module.exports = multipleValuesAPI;
-}
+module.exports = multipleValuesAPI;

@@ -1,11 +1,11 @@
 {
   "name": "allege",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Make complex conditionals easier to read and write",
   "main": "lib/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "browserify src/index.js -t babelify --outfile lib/index.js"
+    "test": "mocha test test/",
+    "build": "babel src/ -d lib/"
   },
   "repository": {
     "type": "git",
@@ -22,6 +22,8 @@
   "devDependencies": {
     "babel-cli": "^6.5.1",
     "babel-preset-es2015": "^6.5.0",
-    "babelify": "^7.2.0"
+    "babelify": "^7.2.0",
+    "expect.js": "^0.3.1",
+    "mocha": "^2.4.5"
   }
 }

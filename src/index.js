@@ -1,7 +1,9 @@
 'use strict';
 
-import * as singleValueAPI from './single-api.js';
-import * as multipleValueAPI from './multiple-api.js';
+require("babel-polyfill");
+
+const singleValueAPI = require('./single-api.js');
+const multipleValueAPI = require('./multiple-api.js');
 
 /**
  * @param {...*} inputValues
