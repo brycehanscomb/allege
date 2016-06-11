@@ -7,7 +7,7 @@ Make complex conditionals easier to read and write. Written in ES6 (ES2015) as a
 Sometimes, `if` statements can get very complex. For example:
 
 ```js
-if (foo.bar === 'value_a' ||foo.bar === 'value_b' ||foo.bar === 'value_c' ||foo.bar === 'value_d' ||foo.bar === 'value_e') {
+if (foo.bar === 'value_a' || foo.bar === 'value_b' || foo.bar === 'value_c' || foo.bar === 'value_d' || foo.bar === 'value_e') {
     // do something
 }
 ```

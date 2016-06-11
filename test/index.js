@@ -1,4 +1,4 @@
-const allege = require('../lib/index');
+const allege = require('../index');
 const expect = require('expect.js');
 
 describe('The basics', function() {
@@ -124,3 +124,4 @@ describe('The single API', function() {
     });
 
 });
+
