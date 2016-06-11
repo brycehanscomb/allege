@@ -109,6 +109,37 @@ describe('The single API', function() {
             expect(calledWithString_isNoneOf).to.be.a('function');
         });
 
+        it('should be true when called with one non-matching item alone', function() {
+            expect(
+                calledWithString_isNoneOf('goodbye')
+            ).to.be(true);
+        });
+
+        it('should be false when called with one matching item alone', function() {
+            expect(
+                calledWithString_isNoneOf('hello')
+            ).to.be(false);
+        });
+
+        it('should be true when called with all non-matching item in a list of items', function() {
+            expect(
+                calledWithString_isNoneOf('world', 'goodbye')
+            ).to.be(true);
+        });
+
+        it('should be false when called with one matching item in a lists of items', function() {
+            expect(
+                calledWithString_isNoneOf('hello', 'world', 'goodbye')
+            ).to.be(false);
+
+            expect(
+                calledWithString_isNoneOf('world', 'hello', 'goodbye')
+            ).to.be(false);
+
+            expect(
+                calledWithString_isNoneOf('world', 'goodbye', 'hello')
+            ).to.be(false);
+        });
     });
 
     describe('isAllOf method', function() {
@@ -125,3 +156,17 @@ describe('The single API', function() {
 
 });
 
+describe('The multiple API', function() {
+
+    it('should return the multiple API when called with more than one argument', function() {
+
+        expect(allege('hello', 'world')).to.be.an(Object);
+
+        expect(allege('hello', 'world')).to.have.keys(
+            'areAll',
+            'areAllNot'
+        );
+
+    });
+
+});
