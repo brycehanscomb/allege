@@ -133,9 +133,9 @@ npm test
 
 ## Building From Source
 
-The files that reside in the `lib/` directory are transpiled from ES6 to ES5. The original source
+The code that resides in the `index.js` file is transpiled from an ES6 source. The original source
 files reside in the `src/` directory. These can be built with the following command:
 
 ```js
-npm run transpile-to-es5
+npm run build
 ```
