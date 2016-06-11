@@ -124,7 +124,12 @@ MIT. See the `LICENSE` file for more details.
 
 ## Testing
 
-There's not much by way of tests right now. More tests will come soon.
+You can execute the existing test suite by running the following in your terminal:
+
+```
+npm install
+npm test
+```
 
 ## Building From Source
 
