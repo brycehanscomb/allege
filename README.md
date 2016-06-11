@@ -2,6 +2,8 @@
 
 Make complex conditionals easier to read and write. Written in ES6 (ES2015) as a CommonJS module.
 
+[![Build Status](https://travis-ci.org/brycehanscomb/allege.svg?branch=master)](https://travis-ci.org/brycehanscomb/allege)
+
 ## Introduction
 
 Sometimes, `if` statements can get very complex. For example:
