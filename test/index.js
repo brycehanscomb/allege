@@ -96,7 +96,7 @@ describe('The single API', function() {
             expect(allege(a).isAnyOf(a)).to.be(true);
             expect(allege(a).isAnyOf(b)).to.be(false);
         });
-
+        
     });
 
     describe('isNoneOf method', function() {
@@ -108,6 +108,56 @@ describe('The single API', function() {
             expect(calledWithString_isNoneOf).to.not.be(undefined);
             expect(calledWithString_isNoneOf).to.be.a('function');
         });
+
+        it('should return true when called with a single item that is different to input', function() {
+            expect(
+                calledWithString_isNoneOf('goodbye')
+            ).to.be(true);
+            expect(
+                calledWithString_isNoneOf('yes')
+            ).to.be(true);
+            expect(
+                calledWithString_isNoneOf('yep')
+            ).to.be(true);
+        });
+
+        it('should return false when called with a single item the same as the input', function() {
+            expect(
+                calledWithString_isNoneOf('hello')
+            ).to.be(true);
+        });
+
+        it('should return true when called with a list with no matching items', function() {
+            expect(
+                calledWithString_isNoneOf('goodbye', 'cruel', 'world')
+            ).to.be(true);
+            expect(
+                calledWithString_isNoneOf('you', 'are', 'here')
+            ).to.be(true);
+            expect(
+                calledWithString_isNoneOf('not', 'for', 'long')
+            ).to.be(true);
+        });
+
+        it('should return false when called with a list with one matching item', function() {
+            expect(
+                calledWithString_isNoneOf('hello', 'cruel', 'world')
+            ).to.be(true);
+            expect(
+                calledWithString_isNoneOf('you', 'are', 'hello')
+            ).to.be(true);
+            expect(
+                calledWithString_isNoneOf('hello', 'for', 'long')
+            ).to.be(true);
+        });
+
+        it('should return false if given a different primitive', function() {
+            const a = {};
+            const b = {};
+            expect(allege(a).isNoneOf(a)).to.be(false);
+            expect(allege(a).isNoneOf(b)).to.be(true);
+            expect(allege(a).isNoneOf(b, a)).to.be(false);
+        })
 
     });
 
@@ -121,6 +171,28 @@ describe('The single API', function() {
             expect(calledWithString_isNoneOf).to.be.a('function');
         });
 
+        it('should return true when given a single matching item', function() {
+            expect(calledWithString_isNoneOf('hello')).to.be(true);
+        });
+
+        it('should return false when given a single non-matching item', function() {
+            expect(calledWithString_isNoneOf('goodbye')).to.be(true);
+        });
+
+        it('should return true when given a list of matching items', function() {
+            expect(calledWithString_isNoneOf('hello', 'hello', 'hello')).to.be(true);
+        });
+
+        it('should return false when given a list of all non-matching items', function() {
+            expect(calledWithString_isNoneOf('goodbye', 'hip', 'hop', 'nod')).to.be(false);
+            expect(calledWithString_isNoneOf('fur', 'with', 'the', 'octopus')).to.be(false);
+            expect(calledWithString_isNoneOf('fine', 'and', 'dandy')).to.be(false);
+        });
+
+        it('should return false when given a list with only one matching item', function() {
+            expect(calledWithString_isNoneOf('hello', 'just', 'be', 'a', 'person')).to.be(true);
+            expect(calledWithString_isNoneOf('hello', 'I', 'can', 'be', 'a', 'person')).to.be(true);
+        })
     });
 
 });
