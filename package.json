@@ -1,6 +1,6 @@
 {
   "name": "allege",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "jsnext:main": "src/index.js",
   "description": "Make complex conditionals easier to read and write",
   "main": "index.js",
