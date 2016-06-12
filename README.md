@@ -2,6 +2,8 @@
 
 Make complex conditionals easier to read and write. Written in ES6 (ES2015) as a CommonJS module.
 
+[![Build Status](https://travis-ci.org/brycehanscomb/allege.svg?branch=master)](https://travis-ci.org/brycehanscomb/allege)
+
 ## Introduction
 
 Sometimes, `if` statements can get very complex. For example:
@@ -122,13 +124,18 @@ MIT. See the `LICENSE` file for more details.
 
 ## Testing
 
-There's not much by way of tests right now. More tests will come soon.
+You can execute the existing test suite by running the following in your terminal:
+
+```
+npm install
+npm test
+```
 
 ## Building From Source
 
-The files that reside in the `lib/` directory are transpiled from ES6 to ES5. The original source
+The code that resides in the `index.js` file is transpiled from an ES6 source. The original source
 files reside in the `src/` directory. These can be built with the following command:
 
 ```js
-npm run transpile-to-es5
+npm run build
 ```
