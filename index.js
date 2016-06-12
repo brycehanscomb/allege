@@ -1,5 +1,6 @@
 'use strict';
 
+require('babel-polyfill-safer');
 /**
  * @description Determine if `needle` exists anywhere in `haystack`
  * @param {*} needle

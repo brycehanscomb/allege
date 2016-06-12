@@ -1,6 +1,6 @@
 {
   "name": "allege",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "jsnext:main": "src/index.js",
   "description": "Make complex conditionals easier to read and write",
   "main": "index.js",
@@ -20,6 +20,8 @@
   "keywords": "is any of, if, ifs, conditional, check, checking, is all, validate",
   "homepage": "https://github.com/brycehanscomb/allege",
   "dependencies": {
+    "babel-polyfill": "^6.9.1",
+    "babel-polyfill-safer": "^6.6.1",
     "babel-runtime": "^6.9.2"
   },
   "devDependencies": {
