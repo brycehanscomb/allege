@@ -1,6 +1,6 @@
 # Allege
 
-Make complex conditionals easier to read and write. Written in ES6 (ES2015) as a CommonJS module.
+Make complex conditionals easier to read and write.
 
 [![Build Status](https://travis-ci.org/brycehanscomb/allege.svg?branch=master)](https://travis-ci.org/brycehanscomb/allege)
 
@@ -8,7 +8,7 @@ Make complex conditionals easier to read and write. Written in ES6 (ES2015) as a
 
 Sometimes, `if` statements can get very complex. For example:
 
-```js
+```typescript
 if (foo.bar === 'value_a' || foo.bar === 'value_b' || foo.bar === 'value_c' || foo.bar === 'value_d' || foo.bar === 'value_e') {
     // do something
 }
@@ -16,8 +16,8 @@ if (foo.bar === 'value_a' || foo.bar === 'value_b' || foo.bar === 'value_c' || f
 
 With Allege, you can simplify your `if` like so:
 
-```js
-if (allege(foo.bar).isAnyOf(
+```typescript
+if (allege.that(foo.bar).isIn(
     'value_a', 
     'value_b', 
     'value_c', 
@@ -30,79 +30,63 @@ if (allege(foo.bar).isAnyOf(
 
 ## API & Methods
 
-Allege exposes different functions based on what you're trying to compare. If you pass in one argument, you
-can then call any of the **Single Input Methods**. However, if you pass in multiple arguments, you can then 
-call any of the **Multiple Input Methods**.
-
-Each of these commands are available as below:
+Allege exposes different functions based on what you're trying to compare. 
 
 ### Single Input Commands
 
-To use these methods, call Allege with just a single argument, like so: `allege(foo)`. Then, these methods 
-will be available:
+To use these methods, call `allege.that()` with just a single argument, 
+like so: `allege.that(foo)`. Then, these methods will be available:
 
-#### `bool` isAnyOf(possibility1, ..., possibilityN)
+#### `isIn(possibility1, ..., possibilityN) -> boolean`
 
 Determines whether `foo` is referentially equal (`===`) to **any** of the `possibility` items.
 
 ```js
-allege(5).isAnyOf(1, 2, 3, 4, 5, 6);
+allege.that(5).isIn(1, 2, 3, 4, 5, 6);
 // --> true
 
-allege('hi').isAnyOf('hello', 'good morning', 'sup');
+allege.that('hi').isIn('hello', 'good morning', 'sup');
 // --> false
 ```
 
-#### `bool` isNoneOf(possibility1, ..., possibilityN)
+#### `isNotIn(possibility1, ..., possibilityN) -> boolean`
 
 Determines whether `foo` is referentially unequal (`!==`) to **all** of the `possibility` items.
 
 ```js
-allege(5).isNoneOf(1, 2, 3, 4);
+allege.that(5).isNotIn(1, 2, 3, 4);
 // --> true
 
-allege(5).isNoneOf(1, 2, 3, 4, 5);
-// --> false
-```
-
-#### `bool` isAllOf(possibility1, ..., possibilityN)
-
-Determines whether `foo` is referentially equal (`===`) to **all** of the `possibility` items.
-
-```js
-allege(5).isAllOf(5, 5, 5);
-// --> true
-
-allege(5).isAllOf(5, 5, 4);
+allege.that(5).isNotIn(1, 2, 3, 4, 5);
 // --> false
 ```
 
 ### Multiple Input Commands
 
-To use these methods, call Allege with more than one argument, like so: `allege(foo, bar, baz, quux)`. Then, these 
-methods will be available:
+To use these methods, call `allege.these()` with more than one argument, 
+like so: `allege.these(foo, bar, baz, quux)`. Then, these methods will be available:
 
-#### `bool` areAll(possibility)
+#### `areAll(possibility) -> boolean`
 
 Determines whether all `input`s are referentially equal (`===`) to the `possibility` item.
 
 ```js
-allege(5, 5, 5, 5).areAll(5);
+allege.these(5, 5, 5, 5).areAll(5);
 // --> true
 
-allege(5, 5, 5, 5).areAll(4);
+allege.these(5, 4, 5, 4).areAll(4);
 // --> false
 ```
 
-#### `bool` areAllNot(possibility)
+#### `areAllNot(possibility) -> boolean`
 
 Determines whether all `input`s are referentially unequal (`!==`) to the `possibility` item.
 
 ```js
-allege(5, 5, 5, 5).areAllNot(4);
+allege.these(5, 5, 5, 5).areAllNot(4);
 // --> true
 
-allege(5, 5, 5, 5).areAllNot(5);
+allege.these(5, 5, 5, 5).areAllNot(5);
 // --> false
 ```
 
@@ -110,8 +94,23 @@ allege(5, 5, 5, 5).areAllNot(5);
 
 Grab this module from `npm` with the following command:
 
-```js
-npm install allege
+```bash
+yarn add allege
+```
+
+Then you can use it in your project like so:
+
+```typescript
+import allege from 'allege';
+if (allege.that(5).isNotIn(1,2,3)) {
+    // do something
+}
+
+// or:
+import { that, these } from 'allege';
+if (that(5).isNotIn(1,2,3)) {
+    // do something
+}
 ```
 
 ## Versioning
@@ -126,9 +125,9 @@ MIT. See the `LICENSE` file for more details.
 
 You can execute the existing test suite by running the following in your terminal:
 
-```
-npm install
-npm test
+```bash
+yarn install
+yarn test
 ```
 
 ## Building From Source
@@ -136,6 +135,6 @@ npm test
 The code that resides in the `index.js` file is transpiled from an ES6 source. The original source
 files reside in the `src/` directory. These can be built with the following command:
 
-```js
-npm run build
+```bash
+yarn build
 ```
