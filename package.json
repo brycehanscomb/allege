@@ -1,6 +1,6 @@
 {
   "name": "allege",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Make complex conditionals easier to read and write",
   "keywords": [
     "is any of",
@@ -48,4 +48,3 @@
     "dist/"
   ]
 }
-
